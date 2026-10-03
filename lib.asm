@@ -77,7 +77,6 @@ print_uint:
        
     push 0      
     mov r9, rsp  
-    sub rsp, 24       
 .loop_div:
     xor rdx, rdx
     div r8
@@ -89,10 +88,11 @@ print_uint:
     cmp rax, 0
     jnz .loop_div
     mov rdi, r9
-  
+    sub rsp, 32 
+
     call print_string
     
-    add rsp, 24
+    add rsp, 32
     pop rax
 .done:
     ret
